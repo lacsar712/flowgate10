@@ -89,7 +89,10 @@ func DumpItemsCSV(path, body string) error {
 }
 
 func GrowSamples(dst []float64, extra float64) []float64 {
-	return append(dst, extra)
+	out := make([]float64, len(dst)+1)
+	copy(out, dst)
+	out[len(dst)] = extra
+	return out
 }
 
 type Node struct {
